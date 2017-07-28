@@ -22,41 +22,52 @@ $(function() {
         });
 
 
-        /* TODO:
+        /*
          * 编写一个测试遍历 allFeeds 对象里面的所有的源来保证有链接字段而且链接不是空的。
          */
          it('defined a non-empty URL for each feed', function() {
-             allFeeds.forEach(function(feed){
+             allFeeds.forEach(function(feed) {
                  expect(feed.url).toBeDefined();
-                 expect(feed.url.length).not.toBe("");
+                 expect(feed.url.length).not.toBe(0);
              });
          });
 
-        /* TODO:
+        /*
          * 编写一个测试遍历 allFeeds 对象里面的所有的源来保证有名字字段而且不是空的。
          */
-         it('have their name defined',function(){
+         it('have their name defined',function() {
              allFeeds.forEach(function(feed){
                 expect(feed.name).toBeDefined();
-                expect(feed.name.length).not.toBe("");
+                expect(feed.name.length).not.toBe(0);
             });
         })
     });
 
 
-    /* TODO: 写一个叫做 "The menu" 的测试用例 */
-    
-        /* TODO:
+    /* 写一个叫做 "The menu" 的测试用例 */
+    describe('The menu', function() {
+
+
+        /*
          * 写一个测试用例保证菜单元素默认是隐藏的。你需要分析 html 和 css
          * 来搞清楚我们是怎么实现隐藏/展示菜单元素的。
          */
-
-         /* TODO:
+         it('should be hidden by default', function() {
+            expect($('body').hasClass('menu-hidden')).toBe(true);
+         });
+         /*
           * 写一个测试用例保证当菜单图标被点击的时候菜单会切换可见状态。这个
           * 测试应该包含两个 expectation ： 党点击图标的时候菜单是否显示，
           * 再次点击的时候是否隐藏。
           */
+          it('changes visibility when menu icon is clicked', function() {
+              $('.menu-icon-link').trigger('click');
+              expect($('body').hasClass('menu-hidden')).toBe(false);
 
+              $('.menu-icon-link').trigger('click');
+              expect($('body').hasClass('menu-hidden')).toBe(true);
+          });
+      });
     /* TODO: 13. 写一个叫做 "Initial Entries" 的测试用例 */
 
         /* TODO:
