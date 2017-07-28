@@ -25,16 +25,27 @@ $(function() {
         /* TODO:
          * 编写一个测试遍历 allFeeds 对象里面的所有的源来保证有链接字段而且链接不是空的。
          */
-
+         it('defined a non-empty URL for each feed', function() {
+             allFeeds.forEach(function(feed){
+                 expect(feed.url).toBeDefined();
+                 expect(feed.url.length).not.toBe("");
+             });
+         });
 
         /* TODO:
          * 编写一个测试遍历 allFeeds 对象里面的所有的源来保证有名字字段而且不是空的。
          */
+         it('have their name defined',function(){
+             allFeeds.forEach(function(feed){
+                expect(feed.name).toBeDefined();
+                expect(feed.name.length).not.toBe("");
+            });
+        })
     });
 
 
     /* TODO: 写一个叫做 "The menu" 的测试用例 */
-
+    
         /* TODO:
          * 写一个测试用例保证菜单元素默认是隐藏的。你需要分析 html 和 css
          * 来搞清楚我们是怎么实现隐藏/展示菜单元素的。
